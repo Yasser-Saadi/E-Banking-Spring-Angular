@@ -1,5 +1,6 @@
 package org.sid.ebankingbackend;
 
+import org.sid.ebankingbackend.dtos.CustomerDTO;
 import org.sid.ebankingbackend.entities.*;
 import org.sid.ebankingbackend.enums.AccountStatus;
 import org.sid.ebankingbackend.enums.OperationType;
@@ -32,7 +33,7 @@ public class EbankingBackendApplication {
     CommandLineRunner commandLineRunner(BankAccountService bankAccountService){
         return args -> {
             Stream.of("Samira", "Latifa", "Hamida").forEach(name->{
-                Customer customer = new Customer();
+                CustomerDTO customer = new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail(name+"gmail.com");
                 bankAccountService.saveCustonmer(customer);
@@ -52,9 +53,7 @@ public class EbankingBackendApplication {
                     }
                 } catch (CustomerNotFounfException e) {
                     e.printStackTrace();
-                } catch (BankAccountNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (BalanceNotSufficientException e) {
+                } catch (BankAccountNotFoundException | BalanceNotSufficientException e) {
                     throw new RuntimeException(e);
                 }
             });
