@@ -12,7 +12,8 @@ import org.sid.ebankingbackend.exceptions.CustomerNotFounfException;
 import java.util.List;
 
 public interface BankAccountService {
-     CustomerDTO saveCustonmer(CustomerDTO customer);
+     CustomerDTO saveCustomer(CustomerDTO customerDTO);
+
      CurrentAccount saveCurrentBankAccount(double initialBalance, double overDraft, Long customerId) throws CustomerNotFounfException;
      SavingAccount saveSavingBankAccount(double initialBalance, double interestRate, Long customerId) throws CustomerNotFounfException;
      List<CustomerDTO> listCustomers();
@@ -24,4 +25,8 @@ public interface BankAccountService {
      List<BankAccount> bankAccounTList();
 
      CustomerDTO getCustomer(Long customerId) throws CustomerNotFounfException;
+
+     CustomerDTO updateCustomer(CustomerDTO customerDTO);
+
+     void deleteCustomer(Long customerId);
 }

@@ -36,7 +36,7 @@ public class EbankingBackendApplication {
                 CustomerDTO customer = new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail(name+"gmail.com");
-                bankAccountService.saveCustonmer(customer);
+                bankAccountService.saveCustomer(customer);
             });
             bankAccountService.listCustomers().forEach(customer ->{
                 try {
